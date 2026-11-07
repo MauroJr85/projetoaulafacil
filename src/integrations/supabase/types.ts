@@ -14,16 +14,161 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      lesson_requests: {
+        Row: {
+          consent_at: string
+          created_at: string
+          id: string
+          message: string | null
+          requester_name: string
+          status: Database["public"]["Enums"]["request_status"]
+          teacher_id: string
+          whatsapp: string
+        }
+        Insert: {
+          consent_at?: string
+          created_at?: string
+          id?: string
+          message?: string | null
+          requester_name: string
+          status?: Database["public"]["Enums"]["request_status"]
+          teacher_id: string
+          whatsapp: string
+        }
+        Update: {
+          consent_at?: string
+          created_at?: string
+          id?: string
+          message?: string | null
+          requester_name?: string
+          status?: Database["public"]["Enums"]["request_status"]
+          teacher_id?: string
+          whatsapp?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "lesson_requests_teacher_id_fkey"
+            columns: ["teacher_id"]
+            isOneToOne: false
+            referencedRelation: "teachers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      teacher_contacts: {
+        Row: {
+          consent_at: string
+          teacher_id: string
+          whatsapp: string
+        }
+        Insert: {
+          consent_at?: string
+          teacher_id: string
+          whatsapp: string
+        }
+        Update: {
+          consent_at?: string
+          teacher_id?: string
+          whatsapp?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "teacher_contacts_teacher_id_fkey"
+            columns: ["teacher_id"]
+            isOneToOne: true
+            referencedRelation: "teachers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      teachers: {
+        Row: {
+          bio: string
+          created_at: string
+          id: string
+          modality: string
+          name: string
+          status: Database["public"]["Enums"]["teacher_status"]
+          subject: string
+        }
+        Insert: {
+          bio: string
+          created_at?: string
+          id?: string
+          modality: string
+          name: string
+          status?: Database["public"]["Enums"]["teacher_status"]
+          subject: string
+        }
+        Update: {
+          bio?: string
+          created_at?: string
+          id?: string
+          modality?: string
+          name?: string
+          status?: Database["public"]["Enums"]["teacher_status"]
+          subject?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
+      submit_lesson_request: {
+        Args: {
+          _adult: boolean
+          _consent: boolean
+          _message: string
+          _name: string
+          _teacher_id: string
+          _whatsapp: string
+        }
+        Returns: string
+      }
+      submit_teacher: {
+        Args: {
+          _adult: boolean
+          _bio: string
+          _consent: boolean
+          _modality: string
+          _name: string
+          _subject: string
+          _whatsapp: string
+        }
+        Returns: string
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin"
+      request_status: "novo" | "contatado" | "concluido"
+      teacher_status: "pendente" | "aprovado" | "rejeitado"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +295,10 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin"],
+      request_status: ["novo", "contatado", "concluido"],
+      teacher_status: ["pendente", "aprovado", "rejeitado"],
+    },
   },
 } as const
