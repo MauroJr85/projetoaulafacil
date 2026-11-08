@@ -28,3 +28,7 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+- Public forms write only via SECURITY DEFINER RPCs (submit_teacher, submit_lesson_request); anon has no direct INSERT, so private contacts stay admin-only.
+- Teacher WhatsApp lives in teacher_contacts, separate from public teachers table, so the catalog can be read publicly without exposing contacts.
+- Admin access = row in user_roles (role 'admin') checked by has_role(); never grant roles from the app.
