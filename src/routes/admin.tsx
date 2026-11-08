@@ -110,13 +110,13 @@ function Dashboard({ email }: { email: string }) {
 
   async function setTeacher(id: string, status: "aprovado" | "rejeitado") {
     const { error } = await supabase.from("teachers").update({ status }).eq("id", id);
-    if (error) return toast.error("Falha ao atualizar.");
+    if (error) { toast.error("Falha ao atualizar."); return; }
     toast.success(status === "aprovado" ? "Professor aprovado." : "Professor rejeitado.");
     qc.invalidateQueries({ queryKey: ["admin-teachers"] });
   }
   async function setRequest(id: string, status: "novo" | "contatado" | "concluido") {
     const { error } = await supabase.from("lesson_requests").update({ status }).eq("id", id);
-    if (error) return toast.error("Falha ao atualizar.");
+    if (error) { toast.error("Falha ao atualizar."); return; }
     qc.invalidateQueries({ queryKey: ["admin-requests"] });
   }
 

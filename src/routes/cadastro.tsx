@@ -58,7 +58,7 @@ function Cadastro() {
       _bio: r.data.bio, _whatsapp: r.data.whatsapp, _consent: true, _adult: true,
     });
     setLoading(false);
-    if (error) return toast.error("Não foi possível enviar. Tente novamente.");
+    if (error) { toast.error("Não foi possível enviar. Tente novamente."); return; }
     setDone(true);
   }
 

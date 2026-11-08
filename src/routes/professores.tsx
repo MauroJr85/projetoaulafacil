@@ -97,7 +97,7 @@ function RequestDialog({ teacher, onClose }: { teacher: Teacher | null; onClose:
     if (!r.success) {
       const errs: Record<string, string> = {};
       r.error.issues.forEach((i) => (errs[String(i.path[0])] ??= i.message));
-      return setErrors(errs);
+      setErrors(errs); return;
     }
     setErrors({});
     setLoading(true);
@@ -106,7 +106,7 @@ function RequestDialog({ teacher, onClose }: { teacher: Teacher | null; onClose:
       _message: r.data.message, _consent: true, _adult: true,
     });
     setLoading(false);
-    if (error) return toast.error("Não foi possível enviar. Tente novamente.");
+    if (error) { toast.error("Não foi possível enviar. Tente novamente."); return; }
     toast.success("Solicitação enviada! Entraremos em contato pelo WhatsApp.");
     setF(empty);
     onClose();
