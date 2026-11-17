@@ -7,7 +7,7 @@ O **AulaFácil** é um MVP educacional de plataforma web que aproxima **professo
 **Aplicação publicada:** https://projetoaulafacil.lovable.app  
 **Repositório:** https://github.com/MauroJr85/projetoaulafacil
 
-> **Nota:** projeto demonstrativo e educacional. A publicação e os testes funcionais não significam que a demanda de mercado, a monetização ou a qualidade dos profissionais já tenham sido validadas.
+> **Nota:** O AulaFácil é um protótipo desenvolvido exclusivamente para fins educacionais, como atividade do curso da DIO, utilizando inteligência artificial e ferramentas de desenvolvimento low-code. Não se destina à exploração comercial nem à prestação efetiva de serviços educacionais. As possibilidades de monetização apresentadas constituem apenas hipóteses acadêmicas.
 
 ## 1. A dor escolhida e a oportunidade de negócio
 
@@ -183,22 +183,14 @@ Esses resultados registram testes funcionais manuais. **Não representam, por si
 - **Backend e persistência previstos no escopo:** Lovable Cloud.
 - **Código-fonte:** disponível neste repositório, sincronizado com o projeto Lovable.
 
-Para desenvolvimento local, o projeto original orienta a instalação de **Node.js** e **npm**. Na pasta raiz do repositório:
+Para executar o projeto localmente, é necessário ter o Bun instalado. Na pasta raiz do repositório, execute:
 
 ```bash
-npm install
-npm run dev
+bun install --frozen-lockfile
+bun run dev
 ```
 
 O comando de desenvolvimento depende das configurações e scripts presentes no projeto efetivamente versionado.
-
-## 8. Entrega para a DIO
-
-- **Aplicação:** https://projetoaulafacil.lovable.app
-- **Código-fonte:** https://github.com/MauroJr85/projetoaulafacil
-- **Objetivo entregue:** MVP de conexão entre professores particulares e interessados, com cadastro, descoberta de perfis, solicitação de aulas e administração básica.
-
-Antes da submissão, confirmar: repositório público; aplicação acessível; documentação consistente com o código; screenshots anexados; nenhum token, segredo, senha ou dado pessoal publicado acidentalmente.
 
 ---
 
