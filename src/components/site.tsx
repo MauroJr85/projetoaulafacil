@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
-import { GraduationCap } from "lucide-react";
+import { GraduationCap, ShieldCheck } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export const SUBJECTS = ["Matemática", "Português", "Inglês"] as const;
 export const MODALITIES = [
@@ -16,17 +17,20 @@ export function SiteLayout({ children }: { children: ReactNode }) {
   return (
     <div className="flex min-h-screen flex-col bg-background">
       <header className="border-b bg-card/80 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-4">
           <Link to="/" className="flex items-center gap-2 font-display text-xl font-bold text-primary">
             <GraduationCap className="h-7 w-7 text-secondary" /> AulaFácil
           </Link>
-          <nav className="flex gap-4 text-sm font-medium">
+          <nav className="flex flex-wrap items-center gap-4 text-sm font-medium">
             <Link to="/professores" className="hover:text-primary" activeProps={{ className: "text-primary" }}>
               Professores
             </Link>
             <Link to="/cadastro" className="hover:text-primary" activeProps={{ className: "text-primary" }}>
               Sou professor
             </Link>
+            <Button asChild size="sm" variant="outline">
+              <Link to="/admin"><ShieldCheck className="h-4 w-4" /> Admin</Link>
+            </Button>
           </nav>
         </div>
       </header>
@@ -35,6 +39,9 @@ export function SiteLayout({ children }: { children: ReactNode }) {
         <div className="mx-auto max-w-6xl px-4 py-6 text-center text-xs text-muted-foreground">
           AulaFácil é um projeto demonstrativo e educacional. Negociação, agendamento e pagamento das
           aulas acontecem diretamente entre as partes, fora da plataforma. Não coletamos dados de menores de idade.
+          <div className="mt-3">
+            <Link to="/admin" className="underline hover:text-primary">Área administrativa</Link>
+          </div>
         </div>
       </footer>
     </div>
