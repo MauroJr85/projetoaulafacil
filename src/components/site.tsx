@@ -35,6 +35,9 @@ export function SiteLayout({ children }: { children: ReactNode }) {
         <div className="mx-auto max-w-6xl px-4 py-6 text-center text-xs text-muted-foreground">
           AulaFácil é um projeto demonstrativo e educacional. Negociação, agendamento e pagamento das
           aulas acontecem diretamente entre as partes, fora da plataforma. Não coletamos dados de menores de idade.
+          <div className="mt-3">
+            <Link to="/admin" className="underline hover:text-primary">Área administrativa</Link>
+          </div>
         </div>
       </footer>
     </div>
